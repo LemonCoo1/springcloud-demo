@@ -1,0 +1,14 @@
+server:
+  port: 9101
+
+spring:
+  application:
+    name: service-hi
+
+eureka:
+  instance:
+    lease-renewal-interval-in-seconds: 10
+    lease-expiration-duration-in-seconds: 30
+  client:
+    serviceUrl:
+      defaultZone: http://s1:9000/eureka/,http://s2:9001/eureka/,http://s3:9002/eureka/

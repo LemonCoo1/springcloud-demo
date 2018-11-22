@@ -1,0 +1,12 @@
+eureka:
+  instance:
+    lease-renewal-interval-in-seconds: 15
+    lease-expiration-duration-in-seconds: 45
+  client:
+    serviceUrl:
+      defaultZone: http://s1:9000/eureka/,http://s2:9001/eureka/,http://s3:9003/eureka/
+server:
+  port: 9200
+spring:
+  application:
+    name: service-ribbon
