@@ -1,0 +1,24 @@
+server:
+  port: 9400
+spring:
+  application:
+    name: monitor-admin
+eureka:
+  instance:
+    lease-renewal-interval-in-seconds: 30
+    health-check-url-path: /actuator/health
+    prefer-ip-address: true
+    metadata-map:
+      startup: ${random.int}    #needed to trigger info and endpoint update after restart
+  client:
+    registryFetchIntervalSeconds: 5
+    serviceUrl:
+      defaultZone: http://s1:9000/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS

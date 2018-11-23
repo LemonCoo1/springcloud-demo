@@ -1,14 +1,28 @@
 server:
-  port: 9101
-
+  port: 9102
 spring:
   application:
-    name: service-hi
-
+    name: service-hi3
 eureka:
   instance:
-    lease-renewal-interval-in-seconds: 10
-    lease-expiration-duration-in-seconds: 30
+    lease-renewal-interval-in-seconds: 30
+    lease-expiration-duration-in-seconds: 90
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
   client:
     serviceUrl:
       defaultZone: http://s1:9000/eureka/,http://s2:9001/eureka/,http://s3:9002/eureka/
+info:
+  app:
+    name: eureka-client
+    version: 1.0.0
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+    pause:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"

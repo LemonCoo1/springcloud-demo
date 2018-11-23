@@ -1,7 +1,7 @@
 eureka:
   instance:
-    lease-renewal-interval-in-seconds: 15
-    lease-expiration-duration-in-seconds: 45
+    lease-renewal-interval-in-seconds: 30
+    lease-expiration-duration-in-seconds: 90
   client:
     serviceUrl:
       defaultZone: http://s1:9000/eureka/,http://s2:9001/eureka/,http://s3:9003/eureka/
@@ -10,3 +10,12 @@ server:
 spring:
   application:
     name: service-ribbon
+info:
+  app:
+    name: service-ribbon
+    version: 1.0.0
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

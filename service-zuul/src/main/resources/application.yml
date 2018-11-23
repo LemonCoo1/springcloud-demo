@@ -1,7 +1,8 @@
 eureka:
   instance:
-    lease-renewal-interval-in-seconds: 10
-    lease-expiration-duration-in-seconds: 30
+    lease-renewal-interval-in-seconds: 30
+    lease-expiration-duration-in-seconds: 90
+    prefer-ip-address: true
   client:
     serviceUrl:
       defaultZone: http://s1:9000/eureka/,http://s2:9001/eureka/,http://s3:9003/eureka/
@@ -12,9 +13,15 @@ spring:
     name: service-zuul
 zuul:
   routes:
-    api-a:
-      path: /api-a/**
-      serviceId: service-ribbon
-    api-b:
-      path: /api-b/**
+    api:
+      path: /api/**
       serviceId: service-feign
+info:
+  app:
+    name: service-zuul
+    version: 1.0.0
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
