@@ -1,17 +1,21 @@
 server:
   port: 9000
+spring:
+  application:
+    name: eurka-server
+  pid:
+    file: ./eureka-server.pid
 eureka:
   instance:
-    hostname: s1
+    hostname: eureka.xucongblog.com
     prefer-ip-address: true
   server:
-    eviction-interval-timer-in-ms: 20000
+    eviction-interval-timer-in-ms: 3000
     response-cache-auto-expiration-in-seconds: 30
+    use-read-only-response-cache: false
+    response-cache-update-interval-ms: 3000
   client:
     registerWithEureka: false
     fetchRegistry: false
     serviceUrl:
-      defaultZone: http://s1:9000/eureka/,http://s2:9001/eureka/
-spring:
-  application:
-    name: eurka-server
+      defaultZone: http://eureka.xucongblog.com:9000/eureka/

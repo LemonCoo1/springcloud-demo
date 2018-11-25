@@ -22,6 +22,8 @@
         <module>eureka-server</module>
         <module>eureka-client</module>
         <module>service-ribbon</module>
+        <module>service-feign</module>
+        <module>monitor-admin</module>
         <module>service-zuul</module>
     </modules>
 
@@ -52,16 +54,12 @@
         </dependencies>
     </dependencyManagement>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
-
     <repositories>
+        <repository>
+            <id>nexus-aliyun</id>
+            <name>Nexus aliyun</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+        </repository>
         <repository>
             <id>spring-milestones</id>
             <name>Spring Milestones</name>

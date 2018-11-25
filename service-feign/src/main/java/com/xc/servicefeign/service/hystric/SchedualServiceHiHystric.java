@@ -1,6 +1,6 @@
-package com.xc.sericefeign.service.hystric;
+package com.xc.servicefeign.service.hystric;
 
-import com.xc.sericefeign.service.SchedualServiceHi;
+import com.xc.servicefeign.service.SchedualServiceHi;
 import org.springframework.stereotype.Component;
 
 /**
@@ -11,6 +11,6 @@ import org.springframework.stereotype.Component;
 public class SchedualServiceHiHystric implements SchedualServiceHi {
     @Override
     public String sayHiFromClientOne(String name) {
-        return "sorry"+name;
+        return "sorry" + name;
     }
 }

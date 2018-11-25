@@ -3,17 +3,25 @@ server:
 spring:
   application:
     name: monitor-admin
+  pid:
+    file: ./monitor-admin.pid
+  security:
+    user:
+      name: xucong
+      password: xc886696
 eureka:
   instance:
-    lease-renewal-interval-in-seconds: 30
     health-check-url-path: /actuator/health
     prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
     metadata-map:
       startup: ${random.int}    #needed to trigger info and endpoint update after restart
   client:
-    registryFetchIntervalSeconds: 5
+    registry-fetch-interval-seconds: 5
     serviceUrl:
-      defaultZone: http://s1:9000/eureka/
+      defaultZone: http://eureka.xucongblog.com:9000/eureka/
+    register-with-eureka: false
+
 management:
   endpoints:
     web:

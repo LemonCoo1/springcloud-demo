@@ -3,6 +3,7 @@ package com.xc.eurekaclient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.ApplicationPidFileWriter;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,15 +18,20 @@ import org.springframework.web.bind.annotation.RestController;
 public class EurekaClientApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(EurekaClientApplication.class, args);
+        SpringApplication springApplication = new SpringApplication(EurekaClientApplication.class);
+        springApplication.addListeners(new ApplicationPidFileWriter());
+        springApplication.run(args);
     }
 
     @Value("${server.port}")
     String port;
 
+    @Value("${eureka.instance.ip-address}")
+    String ipAddress;
+
     @GetMapping("/hi")
     public String home(@RequestParam(value = "name", defaultValue = "forezp") String name) {
-        return "hi " + name + " ,i am from port:" + port;
+        return "hi " + name + " ,i am from ipAddress:" + ipAddress + " port:" + port;
     }
 
 }

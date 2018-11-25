@@ -1,26 +1,31 @@
 server:
-  port: 9100
-  tomcat:
-    basedir:
+  port: 9200
 spring:
   application:
-    name: service-hi
+    name: service-feign
   pid:
-    file: ./eureka-client.pid
+    file: ./service-feign.pid
 info:
   app:
-    name: eureka-client
+    name: service-feign
     version: 1.0.0
 eureka:
   instance:
-    lease-renewal-interval-in-seconds: 30
-    lease-expiration-duration-in-seconds: 90
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 15
     prefer-ip-address: true
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
-    ip-address:
   client:
     serviceUrl:
       defaultZone: http://eureka.xucongblog.com:9000/eureka/
+    registry-fetch-interval-seconds: 5
+feign:
+  hystrix:
+    enabled: true
+ribbon:
+  MaxAutoRetries: 2
+  MaxAutoRetriesNextServer: 2
+  OkToRetryOnAllOperations: false
 management:
   endpoint:
     health:
@@ -28,8 +33,6 @@ management:
     shutdown:
       enabled: true
     pause:
-      enabled: true
-    restart:
       enabled: true
   endpoints:
     web:

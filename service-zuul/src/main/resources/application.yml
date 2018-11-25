@@ -1,17 +1,21 @@
-eureka:
-  instance:
-    lease-renewal-interval-in-seconds: 30
-    lease-expiration-duration-in-seconds: 90
-    prefer-ip-address: true
-  client:
-    serviceUrl:
-      defaultZone: http://s1:9000/eureka/,http://s2:9001/eureka/,http://s3:9003/eureka/
 server:
   port: 9300
 spring:
   application:
     name: service-zuul
+  pid:
+    file: ./service-zuul.pid
+eureka:
+  instance:
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 15
+    prefer-ip-address: true
+  client:
+    registry-fetch-interval-seconds: 5
+    serviceUrl:
+      defaultZone: http://eureka.xucongblog.com:9000/eureka/
 zuul:
+  retryable: true
   routes:
     api:
       path: /api/**
@@ -21,6 +25,9 @@ info:
     name: service-zuul
     version: 1.0.0
 management:
+  endpoint:
+    health:
+      show-details: ALWAYS
   endpoints:
     web:
       exposure:
