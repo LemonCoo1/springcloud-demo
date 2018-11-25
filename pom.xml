@@ -24,6 +24,7 @@
         <module>service-ribbon</module>
         <module>service-feign</module>
         <module>monitor-admin</module>
+        <module>monitor-hystrix-dashboard</module>
         <module>service-zuul</module>
     </modules>
 

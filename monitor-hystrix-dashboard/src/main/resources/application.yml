@@ -1,24 +1,22 @@
 server:
-  port: 9100
+  port: 9500
 spring:
   application:
-    name: service-hi
+    name: monitor-hystrix-dashboard
   pid:
-    file: ./eureka-client.pid
+    file: ./monitor-hystrix-dashboard.pid
 info:
   app:
-    name: eureka-client
+    name: monitor-hystrix-dashboard
     version: 1.0.0
 eureka:
   instance:
-    lease-renewal-interval-in-seconds: 30
-    lease-expiration-duration-in-seconds: 90
     prefer-ip-address: true
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
-    ip-address:
   client:
     serviceUrl:
       defaultZone: http://eureka.xucongblog.com:9000/eureka/
+    register-with-eureka: false
 management:
   endpoint:
     health:
@@ -33,3 +31,14 @@ management:
     web:
       exposure:
         include: "*"
+      cors:
+        allowed-origins: "*"
+        allowed-methods: "*"
+turbine:
+  app-config: service-feign,service-zuul
+  aggregator:
+    clusterConfig: default
+  clusterNameExpression: new String("default")
+  combine-host: true
+  instanceUrlSuffix:
+    default: actuator/hystrix.stream
