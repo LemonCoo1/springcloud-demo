@@ -1,5 +1,6 @@
 package com.xc.eurekaclient;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @EnableDiscoveryClient
 @EnableEurekaClient
 @RestController
+@Slf4j
 public class EurekaClientApplication {
 
     public static void main(String[] args) {
@@ -31,6 +33,7 @@ public class EurekaClientApplication {
 
     @GetMapping("/hi")
     public String home(@RequestParam(value = "name", defaultValue = "forezp") String name) {
+        log.info("hi",name);
         return "hi " + name + " ,i am from ipAddress:" + ipAddress + " port:" + port;
     }
 

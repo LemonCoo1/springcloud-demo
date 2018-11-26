@@ -19,7 +19,7 @@ eureka:
   client:
     registry-fetch-interval-seconds: 5
     serviceUrl:
-      defaultZone: http://eureka.xucongblog.com:9000/eureka/
+      defaultZone: http://localhost:9000/eureka/
     register-with-eureka: false
 
 management:
