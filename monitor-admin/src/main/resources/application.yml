@@ -9,6 +9,21 @@ spring:
     user:
       name: xucong
       password: xc886696
+  boot:
+    admin:
+      notify:
+        mail:
+          from: xcong94@163.com
+          to: xcong94@163.com
+  mail:
+    host: smtp.163.com
+    username: xcong94@163.com
+    password: Xcong886696
+    properties:
+      mail.debug: false
+      mail.smtp.auth: true
+      mail.smtp.port: 587
+      mail.smtp.ssl.enable: true
 eureka:
   instance:
     health-check-url-path: /actuator/health

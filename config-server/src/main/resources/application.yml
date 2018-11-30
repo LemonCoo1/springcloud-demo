@@ -1,0 +1,19 @@
+server:
+  port: 9600
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/LemonCoo1/springcloud-config/
+          default-label: master
+          username:
+          password:
+  pid:
+    file: ./config-server.pid
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9000/eureka/
